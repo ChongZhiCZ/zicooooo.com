@@ -1,8 +1,10 @@
 import Link from '@/components/Link'
 import Tag from '@/components/Tag'
+import Image from 'next/image'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
+import SocialIcon from '@/components/social-icons'
 
 const MAX_DISPLAY = 5
 
@@ -10,13 +12,50 @@ export default function Home({ posts }) {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="space-y-2 pt-6 pb-8 md:space-y-5">
-          <h1 className="text-3xl leading-9 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14 dark:text-gray-100">
-            Latest
-          </h1>
-          <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            {siteMetadata.description}
-          </p>
+        <div className="flex flex-col gap-16 space-y-2 pt-6 pb-8 md:flex-row md:gap-24 md:space-y-5">
+          <div className="flex flex-col items-center text-center md:w-1/2 md:flex-1">
+            <Image
+              alt="zico"
+              className="grayscale transition-all duration-300 hover:grayscale-0"
+              width={240}
+              height={240}
+              priority
+              src="/static/images/avatar.png"
+            ></Image>
+            <h1 className="mb-2 text-2xl font-bold md:text-4xl">Zhi Chong</h1>
+            <p className="mb-4 font-mono text-sm">Scallion Oil Noodles No.1</p>
+            <div className="flex flex-col items-center">
+              <div className="mb-3 flex space-x-4">
+                <SocialIcon kind="mail" href={`mailto:${siteMetadata.email}`} size={6} />
+                <SocialIcon kind="github" href={siteMetadata.github} size={6} />
+                <SocialIcon kind="x" href={siteMetadata.x} size={6} />
+              </div>
+            </div>
+          </div>
+          <div className="space-y-16 md:w-1/2 md:flex-[1.5]">
+            <div className="font-mono">
+              <div className="mb-4 text-sm text-gray-500">life.ts</div>
+              <div className="space-y-2 text-sm">
+                <div>
+                  <span className="text-primary-500">const</span> tejas ={' '}
+                  <span className="text-gray-500">async</span> ()
+                  <span className="text-primary-500"> =&gt;</span> {'{'}
+                </div>
+                <div className="pl-4">
+                  <span className="text-primary-500">while</span> (alive) {'{'}
+                </div>
+                <div className="pl-8">
+                  <span className="text-gray-500">await</span> learn{'()'}
+                  <br />
+                  <span className="text-gray-500">await</span> debug{'()'}
+                  <br />
+                  <span className="text-gray-500">await</span> optimize{'()'}
+                </div>
+                <div className="pl-4">{'}'}</div>
+                <div>{'}'}</div>
+              </div>
+            </div>
+          </div>
         </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
