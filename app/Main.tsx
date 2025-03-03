@@ -7,6 +7,8 @@ import NewsletterForm from 'pliny/ui/NewsletterForm'
 import SocialIcon from '@/components/social-icons'
 import VisitLineChart from '@/components/VisitLineChart'
 import GitHubActivityHeatmap from '@/components/GitHubHeatmap'
+import Collapsible from '@/components/Collapse'
+import { TechIcons } from '@/components/tech-icons'
 const MAX_DISPLAY = 5
 export default function Home({ posts }) {
   return (
@@ -71,7 +73,16 @@ export default function Home({ posts }) {
           </div>
         </div>
         <GitHubActivityHeatmap contributions={undefined}></GitHubActivityHeatmap>
-
+        <div className="mt-8">
+          <Collapsible title="Technical Skills" description="Technologies I work with">
+            <TechIcons />
+          </Collapsible>
+          <div className="mt-8 mb-8">
+            <p className="text-center font-mono text-sm text-gray-500">
+              "Code is like humor. When you have to explain it, it's bad."
+            </p>
+          </div>
+        </div>
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
