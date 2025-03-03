@@ -5,14 +5,14 @@ import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import SocialIcon from '@/components/social-icons'
-
+import VisitLineChart from '@/components/VisitLineChart'
+import GitHubActivityHeatmap from '@/components/GitHubHeatmap'
 const MAX_DISPLAY = 5
-
 export default function Home({ posts }) {
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
-        <div className="flex flex-col gap-16 space-y-2 pt-6 pb-8 md:flex-row md:gap-24 md:space-y-5">
+        <div className="flex flex-col gap-16 space-y-2 border-0 pt-6 pb-8 md:flex-row md:gap-24 md:space-y-5">
           <div className="flex flex-col items-center text-center md:w-1/2 md:flex-1">
             <Image
               alt="zico"
@@ -32,12 +32,12 @@ export default function Home({ posts }) {
               </div>
             </div>
           </div>
-          <div className="space-y-16 md:w-1/2 md:flex-[1.5]">
+          <div className="space-y-8 pt-15 md:w-1/2 md:flex-[1.5]">
             <div className="font-mono">
-              <div className="mb-4 text-sm text-gray-500">life.ts</div>
+              <h2 className="mb-4 text-sm text-gray-500">life.ts</h2>
               <div className="space-y-2 text-sm">
                 <div>
-                  <span className="text-primary-500">const</span> tejas ={' '}
+                  <span className="text-primary-500">const</span> zhichong ={' '}
                   <span className="text-gray-500">async</span> ()
                   <span className="text-primary-500"> =&gt;</span> {'{'}
                 </div>
@@ -55,8 +55,23 @@ export default function Home({ posts }) {
                 <div>{'}'}</div>
               </div>
             </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <h2 className="text-gray-500">Website Activity</h2>
+                <div className="flex items-center space-x-1">
+                  <div className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-green-500"></span>
+                  </div>
+                  <span className="text-xs text-gray-500">LIVE</span>
+                </div>
+              </div>
+              <VisitLineChart></VisitLineChart>
+            </div>
           </div>
         </div>
+        <GitHubActivityHeatmap contributions={undefined}></GitHubActivityHeatmap>
+
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {
