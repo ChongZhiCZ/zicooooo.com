@@ -15,6 +15,7 @@ import {
 import { Line } from 'react-chartjs-2'
 import { useTheme } from 'next-themes'
 import Annotation from 'chartjs-plugin-annotation'
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -25,7 +26,6 @@ ChartJS.register(
   Legend,
   Annotation
 )
-
 interface LineChartProps {
   title?: string
   className?: string
@@ -33,7 +33,6 @@ interface LineChartProps {
 
 // 获取图表选项
 const getChartOptions = (title: string, isDarkMode: boolean): ChartOptions<'line'> => {
-  // Set up initial default values
   return {
     responsive: true,
     maintainAspectRatio: false,
@@ -42,15 +41,17 @@ const getChartOptions = (title: string, isDarkMode: boolean): ChartOptions<'line
         display: false,
       },
     },
+    backgroundColor: 'blue',
     scales: {
       x: {
         grid: {
           display: false,
           color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
         },
+        border: { display: false },
         ticks: {
           color: isDarkMode ? '#d1d5db' : '#4b5563',
-          align: 'start',
+          align: 'inner',
         },
       },
       y: {
@@ -59,19 +60,18 @@ const getChartOptions = (title: string, isDarkMode: boolean): ChartOptions<'line
           color: isDarkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)',
         },
         border: { display: false },
-
         ticks: {
           color: isDarkMode ? '#d1d5db' : '#4b5563',
           maxTicksLimit: 3,
           padding: 10,
-          align: 'center',
+          align: 'inner',
         },
       },
     },
     interaction: {
       mode: 'nearest',
-      intersect: false, // 鼠标不需要精确相交就能触发
-      axis: 'xy', // 同时在 x 和 y 轴方向判断
+      intersect: false,
+      axis: 'xy',
     },
   }
 }
@@ -105,8 +105,8 @@ const LineChart: React.FC<LineChartProps> = ({ title = '', className = '' }) => 
   if (!isClient) return null // Prevent rendering on SSR until after the component mounts on the client
 
   return (
-    <div className={`mx-auto h-35 w-full max-w-4xl ${className}`}>
-      <div className="mt-4 flex items-center justify-end space-x-4 pr-13">
+    <div className={`mx-auto h-35 w-full max-w-4xl ${className} `}>
+      <div className="mt-4 flex items-center justify-end space-x-4">
         <div className="flex items-center space-x-1">
           <div className="bg-primary-500 h-px w-4"></div>
           <span className="text-xs text-gray-600">Visitor</span>

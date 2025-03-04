@@ -43,8 +43,8 @@ const Collapsible = ({ title, description, children }: CollapsibleProps) => {
         </div>
       </button>
       <div
-        className={`mt-6 transition-all duration-200 ease-in-out ${
-          isCollapsed ? 'h-0 opacity-0' : 'h-auto opacity-100'
+        className={`mt-6 overflow-hidden transition-all duration-200 ease-in-out ${
+          isCollapsed ? 'invisible max-h-0' : 'visible max-h-[1000px]'
         }`}
       >
         {children}

@@ -18,7 +18,7 @@ export default function Home({ posts }) {
           <div className="flex flex-col items-center text-center md:w-1/2 md:flex-1">
             <Image
               alt="zico"
-              className="grayscale transition-all duration-300 hover:grayscale-0"
+              className="mb-6 grayscale transition-all duration-300 hover:grayscale-0"
               width={240}
               height={240}
               priority
@@ -57,9 +57,11 @@ export default function Home({ posts }) {
                 <div>{'}'}</div>
               </div>
             </div>
-            <div>
-              <div className="flex items-center space-x-2">
-                <h2 className="text-gray-500">Website Activity</h2>
+            <div className="card !pb-10">
+              <div className="flex items-center justify-between space-x-2">
+                <h2 className="text-base font-semibold text-gray-900 sm:text-lg dark:text-gray-100">
+                  Website Activity
+                </h2>
                 <div className="flex items-center space-x-1">
                   <div className="relative flex h-2 w-2">
                     <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
