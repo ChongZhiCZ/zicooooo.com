@@ -61,6 +61,10 @@ import yaml from 'public/static/techicons/yaml.svg'
 import yarn from 'public/static/techicons/yarn.svg'
 import zoom from 'public/static/techicons/zoom.svg'
 import redis from 'public/static/techicons/redis.svg'
+import mssql from 'public/static/techicons/mssql.svg'
+import servicebus from 'public/static/techicons/servicebus.svg'
+import azure from 'public/static/techicons/azure.svg'
+import azurepipline from 'public/static/techicons/azurepipline.svg'
 
 export enum TechType {
   Frontend = 'frontend',
@@ -81,10 +85,12 @@ export const icons: Record<string, IconDefinition> = {
   Antd: { value: Antd, label: 'Antd', type: TechType.Frontend },
   Antv: { value: Antv, label: 'Antv', type: TechType.Frontend },
   Axios: { value: Axios, label: 'Axios', type: TechType.Frontend },
+  Azure: { value: azure, label: 'Azure', type: TechType.DevOps },
+  AzurePipline: { value: azurepipline, label: 'Azure Pipline', type: TechType.DevOps },
   Blazor: { value: Blazor, label: 'Blazor', type: TechType.Frontend },
   BootStrap: { value: BootStrap, label: 'BootStrap', type: TechType.Frontend },
-  ChainLink: { value: ChainLink, label: 'ChainLink', type: TechType.Blockchain },
-  Chatjs: { value: Chatjs, label: 'Chat.js', type: TechType.Frontend },
+  ChainLink: { value: ChainLink, label: 'ChainLink', type: TechType.Other },
+  Chatjs: { value: Chatjs, label: 'Chart.js', type: TechType.Frontend },
   ChatBot: { value: ChatBot, label: 'ChatBot', type: TechType.Other },
   Confluence: { value: Confluence, label: 'Confluence', type: TechType.Other },
   Csharp: { value: Csharp, label: 'C#', type: TechType.Language },
@@ -108,6 +114,7 @@ export const icons: Record<string, IconDefinition> = {
   jsonwebtokens: { value: jsonwebtokens, label: 'JWT', type: TechType.Other },
   linux: { value: linux, label: 'Linux', type: TechType.Other },
   markdown: { value: markdown, label: 'Markdown', type: TechType.Other },
+  mssql: { value: mssql, label: 'SQL Server', type: TechType.Database },
   mysql: { value: mysql, label: 'Mysql', type: TechType.Database },
   nextdotjs: { value: nextdotjs, label: 'Next.js', type: TechType.Frontend },
   nodedotjs: { value: nodedotjs, label: 'Node.js', type: TechType.Backend },
@@ -126,6 +133,7 @@ export const icons: Record<string, IconDefinition> = {
   redux: { value: redux, label: 'Redux', type: TechType.Frontend },
   resharper: { value: resharper, label: 'Resharper', type: TechType.Other },
   sass: { value: sass, label: 'sass', type: TechType.Frontend },
+  servicebus: { value: servicebus, label: 'Service Bus', type: TechType.Backend },
   solidity: { value: solidity, label: 'Solidity', type: TechType.Blockchain },
   sqlite: { value: sqlite, label: 'Sqlite', type: TechType.Database },
   swagger: { value: swagger, label: 'Swagger', type: TechType.Other },
