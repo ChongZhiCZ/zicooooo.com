@@ -9,8 +9,11 @@ import VisitLineChart from '@/components/VisitLineChart'
 import GitHubActivityHeatmap from '@/components/GitHubHeatmap'
 import Collapsible from '@/components/Collapse'
 import { TechIcons } from '@/components/tech-icons'
+import { getGitHubContributions } from '@/app/api/github/service'
+
 const MAX_DISPLAY = 5
-export default function Home({ posts }) {
+export default async function Home({ posts }) {
+  const contributions = await getGitHubContributions()
   return (
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
@@ -74,7 +77,7 @@ export default function Home({ posts }) {
             </div>
           </div>
         </div>
-        <GitHubActivityHeatmap contributions={undefined}></GitHubActivityHeatmap>
+        <GitHubActivityHeatmap contributions={contributions}></GitHubActivityHeatmap>
         <div className="mt-8">
           <Collapsible title="Technical Skills" description="Technologies I work with">
             <TechIcons />
