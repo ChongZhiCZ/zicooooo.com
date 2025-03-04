@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, use } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -15,6 +15,7 @@ import {
 import { Line } from 'react-chartjs-2'
 import { useTheme } from 'next-themes'
 import Annotation from 'chartjs-plugin-annotation'
+import dayjs from '@/lib/dayjs'
 
 ChartJS.register(
   CategoryScale,
@@ -29,6 +30,7 @@ ChartJS.register(
 interface LineChartProps {
   title?: string
   className?: string
+  fetchData: Promise<{ date: string; count: number }[]>
 }
 
 // 获取图表选项
@@ -62,7 +64,9 @@ const getChartOptions = (title: string, isDarkMode: boolean): ChartOptions<'line
         border: { display: false },
         ticks: {
           color: isDarkMode ? '#d1d5db' : '#4b5563',
-          maxTicksLimit: 3,
+          count: 3,
+          stepSize: 1,
+          precision: 0,
           padding: 10,
           align: 'inner',
         },
@@ -76,28 +80,26 @@ const getChartOptions = (title: string, isDarkMode: boolean): ChartOptions<'line
   }
 }
 
-// 图表数据
-const chartData: ChartData<'line'> = {
-  labels: ['3.1', '3.1', '3.1', '3.1', '3.1', '3.1', '3.1'],
-  datasets: [
-    {
-      label: 'Visitor',
-      data: [65, 59, 80, 81, 56, 55, 40],
-      backgroundColor: 'oklch(0.627 0.194 149.214/0.5)',
-      tension: 0.4,
-      pointRadius: 4,
-      borderWidth: 1,
-      borderColor: 'oklch(0.723 0.219 149.579)',
-      pointHoverRadius: 6,
-    },
-  ],
-}
-
-const LineChart: React.FC<LineChartProps> = ({ title = '', className = '' }) => {
+const LineChart: React.FC<LineChartProps> = ({ title = '', className = '', fetchData }) => {
   const [isClient, setIsClient] = useState(false)
   const { theme } = useTheme()
   const isDarkMode = theme === 'dark'
-
+  const visitorLogs = use(fetchData)
+  const chartData: ChartData<'line'> = {
+    labels: visitorLogs.map((log) => dayjs(log.date).format('MMM D')),
+    datasets: [
+      {
+        label: 'Visitor',
+        data: visitorLogs.map((log) => log.count),
+        backgroundColor: 'oklch(0.627 0.194 149.214/0.5)',
+        tension: 0.4,
+        pointRadius: 4,
+        borderWidth: 1,
+        borderColor: 'oklch(0.723 0.219 149.579)',
+        pointHoverRadius: 6,
+      },
+    ],
+  }
   useEffect(() => {
     setIsClient(true) // Ensure this code runs only on the client
   }, [])

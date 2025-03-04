@@ -45,5 +45,5 @@ yarn-error.log*
 
 # Contentlayer
 .contentlayer
-
+.env
 .vercel
