@@ -76,6 +76,7 @@ export enum TechType {
   Other = 'other',
 }
 export interface IconDefinition {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   value: any
   label: string
   type: TechType
