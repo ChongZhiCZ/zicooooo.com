@@ -10,17 +10,21 @@ const iconsDirectory = path.join(__dirname, '../public/static/techicons')
 const outputFilePath = path.join(__dirname, '../components/tech-icons/iconImports.ts')
 
 const fileNames = fs.readdirSync(iconsDirectory)
-const svgFiles = fileNames.filter(file => file.endsWith('.svg'))
+const svgFiles = fileNames.filter((file) => file.endsWith('.svg'))
 
-const imports = svgFiles.map(file => {
-  const name = path.basename(file, '.svg')
-  return `import ${name} from 'public/static/techicons/${file}'`
-}).join('\n')
+const imports = svgFiles
+  .map((file) => {
+    const name = path.basename(file, '.svg')
+    return `import ${name} from 'public/static/techicons/${file}'`
+  })
+  .join('\n')
 
-const exports = `export const icons = {\n${svgFiles.map(file => {
-  const name = path.basename(file, '.svg')
-  return `  ${name}:{value:${name}, label:'${name}'},`
-}).join('\n')}\n}`
+const exports = `export const icons = {\n${svgFiles
+  .map((file) => {
+    const name = path.basename(file, '.svg')
+    return `  ${name}:{value:${name}, label:'${name}'},`
+  })
+  .join('\n')}\n}`
 
 const content = `${imports}\n\n${exports}\n`
 

@@ -5,6 +5,7 @@ import 'react-calendar-heatmap/dist/styles.css'
 import { Tooltip } from 'react-tooltip'
 import dayjs from '@/lib/dayjs'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ReactCalendarHeatmap = dynamic<any>(
   () => import('react-calendar-heatmap'),
   { ssr: false } // 禁用服务器端渲染
@@ -84,7 +85,7 @@ const GitHubActivityHeatmap = ({ contributions }) => {
                 return 'color-github-1'
               }}
               tooltipDataAttrs={(value) => {
-                value ?? 0
+                value ??= 0
                 return {
                   'data-tooltip-id': 'github-contribution-tooltip',
                   'data-tooltip-content': `${dayjs(value.date).format('MMM D, YYYY')}: ${value.count} contributions`,

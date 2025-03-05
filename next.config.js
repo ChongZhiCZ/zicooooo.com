@@ -69,7 +69,7 @@ module.exports = () => {
     reactStrictMode: true,
     pageExtensions: ['ts', 'tsx', 'js', 'jsx', 'md', 'mdx'],
     eslint: {
-      dirs: ['app', 'components', 'layouts', 'scripts','lib'],
+      dirs: ['app', 'components', 'layouts', 'scripts', 'lib'],
     },
     images: {
       remotePatterns: [
@@ -91,29 +91,31 @@ module.exports = () => {
     webpack: (config, options) => {
       config.module.rules.push({
         test: /\.svg$/,
-        use: [{
-          loader: '@svgr/webpack',
-          options: {
-            typescript: true,
-            dimensions: true, // 保持原始尺寸
-            svgoConfig: {
-              plugins: [
-                {
-                  name: 'preset-default',
-                  params: {
-                    overrides: {
-                      removeViewBox: false, // 保持视图框
-                      convertPathData: false, // 禁用路径优化
-                      convertColors: {
-                        currentColor: true
-                      }
+        use: [
+          {
+            loader: '@svgr/webpack',
+            options: {
+              typescript: true,
+              dimensions: true, // 保持原始尺寸
+              svgoConfig: {
+                plugins: [
+                  {
+                    name: 'preset-default',
+                    params: {
+                      overrides: {
+                        removeViewBox: false, // 保持视图框
+                        convertPathData: false, // 禁用路径优化
+                        convertColors: {
+                          currentColor: true,
+                        },
+                      },
                     },
                   },
-                },
-              ],
+                ],
+              },
             },
           },
-        }],
+        ],
       })
 
       return config
