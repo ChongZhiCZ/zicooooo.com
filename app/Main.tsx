@@ -13,6 +13,7 @@ import { getGitHubContributions } from '@/app/api/github/service'
 import { getLastSevenDaysVisits } from '@/app/api/visitor-log'
 const MAX_DISPLAY = 5
 export default async function Home({ posts }) {
+  const lastSevenDaysVisits = getLastSevenDaysVisits()
   const contributions = await getGitHubContributions()
   return (
     <>
@@ -73,7 +74,7 @@ export default async function Home({ posts }) {
                   <span className="text-xs text-gray-500">LIVE</span>
                 </div>
               </div>
-              <VisitLineChart fetchData={getLastSevenDaysVisits()}></VisitLineChart>
+              <VisitLineChart fetchData={lastSevenDaysVisits}></VisitLineChart>
             </div>
           </div>
         </div>

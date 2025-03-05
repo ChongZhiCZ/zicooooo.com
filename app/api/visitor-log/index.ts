@@ -38,3 +38,29 @@ export async function getLastSevenDaysVisits() {
 
   return formattedResults
 }
+
+export async function createVisitorLog({ ipAddress, userAgent }) {
+  const log = await prisma.visitorLog.create({
+    data: {
+      ipAddress,
+      userAgent,
+      visitTime: new Date(),
+    },
+  })
+  return log.id
+}
+
+export async function updateExitTime(id: string) {
+  const now = new Date()
+  await prisma.visitorLog.update({
+    where: { id },
+    data: {
+      exitTime: now,
+      sessionDuration: Math.floor(
+        (now.getTime() -
+          (await prisma.visitorLog.findUnique({ where: { id } }))!.visitTime.getTime()) /
+          1000
+      ),
+    },
+  })
+}
