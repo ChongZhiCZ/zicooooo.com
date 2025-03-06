@@ -24,7 +24,7 @@ const Collapsible = ({ title, description, children }: CollapsibleProps) => {
           <h3 className="text-lg font-medium">{title}</h3>
           {description && <p className="text-sm text-gray-600 dark:text-gray-400">{description}</p>}
         </div>
-        <div className="flex h-8 w-8 items-center justify-center rounded-md border border-gray-200 dark:border-gray-800">
+        <div className="flex h-8 w-8 items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800">
           <svg
             className={`h-4 w-4 transform text-gray-600 transition-transform duration-200 dark:text-gray-400 ${
               isCollapsed ? '' : 'rotate-180'

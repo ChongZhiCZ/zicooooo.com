@@ -54,7 +54,7 @@ export const TechIcons: React.FC<TechIconsProps> = ({ className, iconClassName }
       >
         {filteredIcons.map(([name, icon]) => (
           <div key={name} className="slide-in-from-bottom-4 flex flex-col items-center gap-2">
-            <div className="hover:border-primary-500 group/icon flex h-12 w-12 items-center justify-center rounded-lg border border-gray-200 transition-colors dark:border-gray-800">
+            <div className="hover:border-primary-500 group/icon flex h-12 w-12 items-center justify-center rounded-lg border border-neutral-200 transition-colors dark:border-neutral-800">
               <TechIcon name={name as IconName} />
             </div>
             <span className="text-sm text-gray-600 dark:text-gray-400">{icon.label}</span>

@@ -53,7 +53,7 @@ const GitHubActivityHeatmap = ({ contributions }) => {
           fill: oklch(0.723 0.219 149.579);
         }
       `}</style>
-      <div className="mt-5 rounded-lg border border-gray-200 p-4 sm:p-6 dark:border-gray-800">
+      <div className="mt-5 rounded-lg border border-neutral-200 p-4 sm:p-6 dark:border-neutral-800">
         <div className="mb-4 flex flex-col space-y-2 sm:mb-6 sm:flex-row sm:items-center sm:justify-between sm:space-y-0">
           <div className="flex items-center space-x-2">
             <h3 className="text-base font-semibold text-gray-900 sm:text-lg dark:text-gray-100">
@@ -99,7 +99,7 @@ const GitHubActivityHeatmap = ({ contributions }) => {
             <Tooltip
               id="github-contribution-tooltip"
               place="top"
-              className="!rounded !bg-gray-800 !px-2 !py-1 !text-xs"
+              className="!rounded !bg-neutral-800 !px-2 !py-1 !text-xs"
             />
           </div>
         </div>
@@ -107,7 +107,7 @@ const GitHubActivityHeatmap = ({ contributions }) => {
         <div className="mt-4 flex items-center justify-end space-x-1.5 sm:mt-6 sm:space-x-2">
           <span className="text-xs text-gray-500 dark:text-gray-400">Less</span>
           <div className="flex items-center space-x-1">
-            <div className="h-2.5 w-2.5 rounded-full border border-gray-200 bg-gray-100 sm:h-3 sm:w-3 dark:border-gray-700 dark:bg-gray-800"></div>
+            <div className="h-2.5 w-2.5 rounded-full border border-neutral-200 bg-neutral-100 sm:h-3 sm:w-3 dark:border-neutral-700 dark:bg-neutral-800"></div>
             <div className="bg-primary-500/20 h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"></div>
             <div className="bg-primary-500/40 h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"></div>
             <div className="bg-primary-500/70 h-2.5 w-2.5 rounded-full sm:h-3 sm:w-3"></div>

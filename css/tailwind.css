@@ -135,10 +135,10 @@
 }
 
 .card {
-  @apply rounded-lg border border-gray-200 p-6 dark:border-gray-700;
+  @apply rounded-lg border border-neutral-200 p-6 dark:border-neutral-700;
 }
 .card:hover {
-  @apply bg-gray-50 shadow-sm dark:bg-gray-800/50;
+  @apply bg-neutral-50 shadow-sm dark:bg-neutral-800/50;
 }
 
 .task-list-item::before {
@@ -150,7 +150,7 @@
 }
 
 .footnotes {
-  @apply mt-12 border-t border-gray-200 pt-8 dark:border-gray-700;
+  @apply mt-12 border-t border-neutral-200 pt-8 dark:border-neutral-700;
 }
 
 .data-footnote-backref {
