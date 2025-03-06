@@ -17,6 +17,7 @@ const GitHubActivityHeatmap = ({ contributions }) => {
       date: day.date,
     }))
   )
+  console.log(heatmapData.filter((d) => d.count != 0))
   const today = new Date()
   function shiftDate(date, numDays) {
     const newDate = new Date(date)
@@ -73,34 +74,39 @@ const GitHubActivityHeatmap = ({ contributions }) => {
         </div>
         <div className="overflow-x-auto">
           <div className="min-w-[750px] overflow-x-auto sm:min-w-full">
-            <ReactCalendarHeatmap
-              startDate={shiftDate(today, -360)}
-              endDate={today}
-              values={heatmapData}
-              gutterSize={2}
-              classForValue={(value) => {
-                if (!value.count) {
-                  return 'color-empty'
-                }
-                if (value.count >= 10) return 'color-github-4'
-                if (value.count >= 6) return 'color-github-3'
-                if (value.count >= 3) return 'color-github-2'
-                return 'color-github-1'
-              }}
-              tooltipDataAttrs={(value) => {
-                value ??= 0
-                return {
-                  'data-tooltip-id': 'github-contribution-tooltip',
-                  'data-tooltip-content': `${dayjs(value.date).format('MMM D, YYYY')}: ${value.count} contributions`,
-                }
-              }}
-              showWeekdayLabels={true}
-            />
-            <Tooltip
-              id="github-contribution-tooltip"
-              place="top"
-              className="!rounded !bg-neutral-800 !px-2 !py-1 !text-xs"
-            />
+            {heatmapData && (
+              <>
+                <ReactCalendarHeatmap
+                  startDate={shiftDate(today, -360)}
+                  endDate={today}
+                  values={heatmapData}
+                  gutterSize={2}
+                  classForValue={(value) => {
+                    // 如value为空，则是因为有缓存，当天凌晨1点后就不会为空了
+                    if (!value || !value.count) {
+                      return 'color-empty'
+                    }
+                    if (value.count >= 10) return 'color-github-4'
+                    if (value.count >= 6) return 'color-github-3'
+                    if (value.count >= 3) return 'color-github-2'
+                    return 'color-github-1'
+                  }}
+                  tooltipDataAttrs={(value) => {
+                    value ??= 0
+                    return {
+                      'data-tooltip-id': 'github-contribution-tooltip',
+                      'data-tooltip-content': `${dayjs(value.date).format('MMM D, YYYY')}: ${value.count} contributions`,
+                    }
+                  }}
+                  showWeekdayLabels={true}
+                />
+                <Tooltip
+                  id="github-contribution-tooltip"
+                  place="top"
+                  className="!rounded !bg-neutral-800 !px-2 !py-1 !text-xs"
+                />
+              </>
+            )}
           </div>
         </div>
 
