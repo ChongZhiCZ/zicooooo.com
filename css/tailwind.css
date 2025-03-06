@@ -24,7 +24,7 @@
   --color-primary-800: oklch(0.448 0.119 151.328);
   --color-primary-900: oklch(0.393 0.095 152.535);
   --color-primary-950: oklch(0.266 0.065 152.934);
-  
+
   --color-gray-50: oklch(0.985 0.002 247.839);
   --color-gray-100: oklch(0.967 0.003 264.542);
   --color-gray-200: oklch(0.928 0.006 264.531);
@@ -69,6 +69,7 @@
   a,
   button {
     outline-color: var(--color-primary-500);
+    cursor: pointer;
   }
 
   a:focus-visible,
@@ -134,10 +135,10 @@
 }
 
 .card {
-  @apply p-6 border rounded-lg border-gray-200 dark:border-gray-700
+  @apply rounded-lg border border-gray-200 p-6 dark:border-gray-700;
 }
-.card:hover{
-  @apply    bg-gray-50  shadow-sm  dark:bg-gray-800/50;
+.card:hover {
+  @apply bg-gray-50 shadow-sm dark:bg-gray-800/50;
 }
 
 .task-list-item::before {

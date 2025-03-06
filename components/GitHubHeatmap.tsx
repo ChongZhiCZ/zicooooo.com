@@ -37,17 +37,20 @@ const GitHubActivityHeatmap = ({ contributions }) => {
         :global(.react-calendar-heatmap .color-empty) {
           fill: oklch(0.928 0.006 264.531);
         }
+        :global(.dark .react-calendar-heatmap .color-empty) {
+          fill: oklch(0.928 0.006 264.531 /0.1);
+        }
         :global(.react-calendar-heatmap .color-github-1) {
-          fill: #22c55e33;
+          fill: oklch(0.723 0.219 149.579 / 0.2);
         }
         :global(.react-calendar-heatmap .color-github-2) {
-          fill: #22c55e66;
+          fill: oklch(0.723 0.219 149.579 / 0.4);
         }
         :global(.react-calendar-heatmap .color-github-3) {
-          fill: #22c55ee6;
+          fill: oklch(0.723 0.219 149.579 / 0.7);
         }
         :global(.react-calendar-heatmap .color-github-4) {
-          fill: #22c55e;
+          fill: oklch(0.723 0.219 149.579);
         }
       `}</style>
       <div className="mt-5 rounded-lg border border-gray-200 p-4 sm:p-6 dark:border-gray-800">

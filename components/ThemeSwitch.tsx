@@ -12,6 +12,26 @@ import {
   Transition,
 } from '@headlessui/react'
 
+const Checked = () => (
+  <svg
+    stroke="currentColor"
+    fill="currentColor"
+    stroke-width="0"
+    viewBox="0 0 512 512"
+    className="h-4 w-4"
+    height="1em"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      fill="none"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="32"
+      d="M416 128 192 384l-96-96"
+    ></path>
+  </svg>
+)
 const Sun = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -65,7 +85,7 @@ const ThemeSwitch = () => {
     <div className="flex items-center">
       <Menu as="div" className="relative inline-block text-left">
         <div className="hover:text-primary-500 dark:hover:text-primary-400 flex items-center justify-center">
-          <MenuButton aria-label="Theme switcher" className="cursor-pointer">
+          <MenuButton aria-label="Theme switcher">
             {mounted ? resolvedTheme === 'dark' ? <Moon /> : <Sun /> : <Blank />}
           </MenuButton>
         </div>
@@ -85,12 +105,13 @@ const ThemeSwitch = () => {
                   <MenuItem>
                     {({ focus }) => (
                       <button
-                        className={`${focus ? 'bg-primary-600 text-white' : ''} group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                        className={`${focus ? 'text-primary-600' : ''} group flex w-full items-center justify-between rounded-md px-2 py-2 text-sm`}
                       >
-                        <div className="mr-2">
+                        <div className="flex items-center gap-2">
                           <Sun />
+                          Light
                         </div>
-                        Light
+                        {theme === 'light' && <Checked />}
                       </button>
                     )}
                   </MenuItem>
@@ -100,13 +121,15 @@ const ThemeSwitch = () => {
                     {({ focus }) => (
                       <button
                         className={`${
-                          focus ? 'bg-primary-600 text-white' : ''
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                          focus ? 'text-primary-600' : ''
+                        } group flex w-full items-center justify-between rounded-md px-2 py-2 text-sm`}
                       >
-                        <div className="mr-2">
+                        <div className="flex items-center gap-2">
                           <Moon />
+                          Dark
                         </div>
-                        Dark
+
+                        {theme === 'dark' && <Checked />}
                       </button>
                     )}
                   </MenuItem>
@@ -116,13 +139,15 @@ const ThemeSwitch = () => {
                     {({ focus }) => (
                       <button
                         className={`${
-                          focus ? 'bg-primary-600 text-white' : ''
-                        } group flex w-full items-center rounded-md px-2 py-2 text-sm`}
+                          focus ? 'text-primary-600' : ''
+                        } group flex w-full items-center justify-between rounded-md px-2 py-2 text-sm`}
                       >
-                        <div className="mr-2">
+                        <div className="flex items-center gap-2">
                           <Monitor />
+                          System
                         </div>
-                        System
+
+                        {theme === 'system' && <Checked />}
                       </button>
                     )}
                   </MenuItem>
