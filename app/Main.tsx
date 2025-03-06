@@ -51,12 +51,23 @@ export default async function Home({ posts }) {
                   <span className="text-primary-500">while</span> (alive) {'{'}
                 </div>
                 <div className="pl-8">
+                  <span className="text-pink-700">try</span> {'{'}
+                </div>
+                <div className="pl-12">
+                  <span className="text-gray-500">await</span> work{'()'}
+                  <br />
                   <span className="text-gray-500">await</span> learn{'()'}
                   <br />
-                  <span className="text-gray-500">await</span> debug{'()'}
-                  <br />
-                  <span className="text-gray-500">await</span> optimize{'()'}
+                  <span className="text-gray-500">await</span> promise.all{'[eat(), smile()]'}
                 </div>
+                <div className="pl-8">
+                  {'}'}
+                  <span className="text-pink-700"> catch</span> (error) {'{'}
+                </div>
+                <div className="pl-12">
+                  <span className="text-gray-500">await</span> debug{'()'}
+                </div>
+                <div className="pl-8">{'}'}</div>
                 <div className="pl-4">{'}'}</div>
                 <div>{'}'}</div>
               </div>
