@@ -125,7 +125,6 @@ const TicTacToe = () => {
 
   return (
     <>
-      <h1 className="mt-10 mb-8 text-2xl font-bold md:text-4xl">Creative Programming</h1>
       <div className="flex w-full items-center justify-center rounded-lg border border-neutral-200 dark:border-neutral-800 dark:bg-neutral-900">
         <div className="flex w-full max-w-xl flex-col items-center px-4 py-8">
           <h2 className="mb-6 text-center text-2xl font-bold">Tic Tac Toe </h2>

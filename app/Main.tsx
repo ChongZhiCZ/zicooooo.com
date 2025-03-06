@@ -11,6 +11,7 @@ import Collapsible from '@/components/Collapse'
 import { TechIcons } from '@/components/tech-icons'
 import { getGitHubContributions } from '@/app/api/github/service'
 import { getLastSevenDaysVisits } from '@/app/api/visitor-log'
+
 const MAX_DISPLAY = 5
 export default async function Home({ posts }) {
   const lastSevenDaysVisits = getLastSevenDaysVisits()
@@ -19,7 +20,7 @@ export default async function Home({ posts }) {
     <>
       <div className="divide-y divide-gray-200 dark:divide-gray-700">
         <div className="flex flex-col gap-16 space-y-2 border-0 pt-6 pb-8 md:flex-row md:gap-24 md:space-y-5">
-          <div className="flex flex-col items-center text-center md:w-1/2 md:flex-1">
+          <div className="flex flex-col items-center justify-center text-center md:w-1/2 md:flex-1">
             <Image
               alt="zico"
               className="mb-6 grayscale transition-all duration-300 hover:grayscale-0"
@@ -85,7 +86,9 @@ export default async function Home({ posts }) {
                   <span className="text-xs text-gray-500">LIVE</span>
                 </div>
               </div>
-              <VisitLineChart fetchData={lastSevenDaysVisits}></VisitLineChart>
+              <div className="h-35">
+                <VisitLineChart fetchData={lastSevenDaysVisits}></VisitLineChart>
+              </div>
             </div>
           </div>
         </div>
