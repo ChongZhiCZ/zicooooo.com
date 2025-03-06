@@ -1,14 +1,15 @@
+import { Pool, neonConfig } from '@neondatabase/serverless'
+import { PrismaNeon } from '@prisma/adapter-neon'
 import { PrismaClient } from '@prisma/client'
+import dotenv from 'dotenv'
+import ws from 'ws'
 
-let prisma: PrismaClient
+dotenv.config()
+neonConfig.webSocketConstructor = ws
+const connectionString = `${process.env.NEON_POSTGRES_DATABASE_URL}`
 
-if (process.env.NODE_ENV === 'production') {
-  prisma = new PrismaClient()
-} else {
-  if (!global.prisma) {
-    global.prisma = new PrismaClient()
-  }
-  prisma = global.prisma
-}
+const pool = new Pool({ connectionString })
+const adapter = new PrismaNeon(pool)
+const prisma = new PrismaClient({ adapter })
 
 export default prisma

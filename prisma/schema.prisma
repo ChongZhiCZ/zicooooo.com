@@ -2,12 +2,15 @@
 
 generator client {
     provider = "prisma-client-js"
+    previewFeatures = ["multiSchema","driverAdapters"]
+
 }
 
 datasource db {
     provider  = "postgresql"
-    url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
-    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+    url       = env("NEON_POSTGRES_DATABASE_URL") // uses connection pooling
+    directUrl = env("NEON_POSTGRES_DATABASE_URL_UNPOOLED") // uses a direct connection
+    schemas  = ["blog"]
 }
 
 model VisitorLog {
@@ -17,4 +20,6 @@ model VisitorLog {
     visitTime       DateTime  @default(now())
     exitTime        DateTime?
     sessionDuration Int?      @default(0)
+
+    @@schema("blog")
 }
